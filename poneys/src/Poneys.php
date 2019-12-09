@@ -25,8 +25,17 @@ class Poneys
      */
     public function removePoneyFromField(int $number): void
     {
-        $this->count -= $number;
+        if ($number <= $this->count){
+            $this->count -= $number;
+        }
+        else{
+            throw new \Exception("Exception can't remove");
+        }   
+        
     }
+
+
+    
 
     /**
      * Retourne les noms des poneys
@@ -36,6 +45,22 @@ class Poneys
     public function getNames(): array
     {
 
+    }
+    
+    //Ajout de champs
+    public function addPoneyFromField(int $number) : void 
+    {
+        $this->count += $number;
+    }
+
+    public function freePoneyField() :  bool
+    {
+        if ($this->count  <= 15){
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
     }
 }
 ?>
